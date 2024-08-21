@@ -1,0 +1,87 @@
+<UserControl
+    x:Class="Talk.App.Views.TalkView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Talk.App.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:TalkViewModel"
+    mc:Ignorable="d">
+    <UserControl.Styles>
+
+        <!--<Style >
+			<Setter></Setter>
+		</Style>-->
+    </UserControl.Styles>
+    <Design.DataContext>
+
+        <vm:TalkViewModel />
+
+    </Design.DataContext>
+
+    <Grid RowDefinitions="0.8* 0.05* 0.2*">
+
+        <Border
+            Grid.Row="0"
+            MinWidth="300"
+            Background="AliceBlue">
+            <ScrollViewer>
+                <StackPanel>
+					<TextBox
+                        Height="100"
+                        Background="Wheat"
+                        FontSize="22"
+                         Text="{Binding MyMessage.Message }" ></TextBox>
+                    <TextBlock Height="100" FontSize="22">Block 2</TextBlock>
+                    <TextBlock
+                        Height="100"
+                        Background="LightBlue"
+                        FontSize="22">
+                        Block 3
+                    </TextBlock>
+                    <TextBlock Height="100" FontSize="22">Block 4</TextBlock>
+                    <TextBlock
+                        Height="100"
+                        Background="LightBlue"
+                        FontSize="22">
+                        Block 5
+                    </TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+        <Border
+            Grid.Row="1"
+            MinWidth="300"
+            Background="White">
+            <Button />
+        </Border>
+        <Border
+            Grid.Row="2"
+            MinWidth="300"
+            Padding="5"
+            Background="AliceBlue"
+            BoxShadow="5 5 10 #888888 ">
+            <Grid ColumnDefinitions="* Auto">
+
+                <TextBox
+                    Grid.Column="0"
+                    MinWidth="300"
+                    Text="{Binding MyMessage.Message }" />
+                <Button
+                    Grid.Column="1"
+                    MinWidth="100"
+                    MinHeight="50"
+                    Margin="5"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="Submit" 
+					Command="{Binding  Sendcommand}"/>
+            </Grid>
+
+        </Border>
+
+    </Grid>
+
+</UserControl>

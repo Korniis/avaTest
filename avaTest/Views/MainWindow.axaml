@@ -1,0 +1,88 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Talk.App.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:Talk.App.Views"
+		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Talk.App.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        x:DataType="vm:MainWindowViewModel"
+        Title="avaTest"
+		TransparencyLevelHint="AcrylicBlur"
+		ExtendClientAreaToDecorationsHint = "True"
+        Background="Transparent"
+		>
+	<Window.Styles>
+		<Style Selector="StackPanel.NavContent">
+			<Setter Property="Orientation" Value="Vertical"/>
+		</Style>
+		<Style Selector="StackPanel.NavContent:pointerover">
+		</Style>
+		<Style Selector="Button.NavButton">
+			<Setter Property="Background"  Value="AntiqueWhite"></Setter>
+		</Style>
+		<Style Selector="StackPanel.NavStack">
+			<Setter Property="MinWidth" Value="50"></Setter>
+		</Style>
+	</Window.Styles>
+	<Design.DataContext>
+		<vm:MainWindowViewModel />
+	</Design.DataContext>
+	<Grid ColumnDefinitions="Auto *">
+		<Grid HorizontalAlignment="Left" Grid.Column="0" >
+
+			<StackPanel  Classes="NavStack"   Grid.Row="0"   Background="AntiqueWhite"  >
+				<Button Classes="NavButton"  Command="{Binding Navicommand }"   CommandParameter="Talk">
+					<StackPanel    Classes="NavContent"     >
+						<Image HorizontalAlignment="Center" Height="50" Width="50"
+							Source="/Assets/avalonia-logo.ico"  ></Image>
+						<TextBlock  HorizontalAlignment="Center" FontSize="9" >聊天</TextBlock>
+					</StackPanel>
+				</Button>
+				<Button  Classes="NavButton" Command="{Binding Navicommand }"   CommandParameter="Main">
+					<StackPanel   Classes="NavContent" >
+						<Image HorizontalAlignment="Center"  Height="50" Width="50"
+							Source="/Assets/avalonia-logo.ico"  ></Image>
+						<TextBlock  HorizontalAlignment="Center" FontSize="9" >资讯</TextBlock>
+					</StackPanel>
+				</Button>
+				<Button  Classes="NavButton">
+					<StackPanel   Classes="NavContent" >
+						<Image HorizontalAlignment="Center"  Height="50" Width="50"
+							Source="/Assets/avalonia-logo.ico"  ></Image>
+						<TextBlock  HorizontalAlignment="Center" FontSize="9" >资讯</TextBlock>
+					</StackPanel>
+				</Button>
+			</StackPanel>
+			<Button  VerticalAlignment="Bottom" Classes="NavButton">
+				<StackPanel   Classes="NavContent"    VerticalAlignment="Bottom"   >
+					<Image HorizontalAlignment="Center" Height="50" Width="50"
+						Source="/Assets/avalonia-logo.ico"  ></Image>
+					<TextBlock  HorizontalAlignment="Center" FontSize="9" >设置</TextBlock>
+				</StackPanel>
+			</Button>
+
+		</Grid>
+		<Grid Grid.Column="1"  RowDefinitions="30 Auto *">
+		
+			
+		
+				<!--<Grid Grid.Row="1"  Height="30" >
+					<Border BorderThickness="0.1"   CornerRadius="3"  BoxShadow="2 1 Black  ">
+						<StackPanel  HorizontalAlignment="Right">
+
+							<TextBlock>asfasf</TextBlock>
+
+						</StackPanel>
+					</Border>
+				
+			</Grid>-->
+			<Grid Grid.Row="2"   >
+
+				<TransitioningContentControl Content="{Binding NowViewModel    }" />
+			</Grid>
+
+		</Grid>
+	</Grid>
+</Window>
